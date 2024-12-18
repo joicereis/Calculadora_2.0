@@ -84,6 +84,7 @@
             this.btnBackSpace.TabIndex = 4;
             this.btnBackSpace.Text = "<-";
             this.btnBackSpace.UseVisualStyleBackColor = true;
+            this.btnBackSpace.Click += new System.EventHandler(this.btnBackSpace_Click);
             // 
             // btnPotencia
             // 
@@ -306,6 +307,7 @@
             // 
             // btnFracao
             // 
+            this.btnFracao.Enabled = false;
             this.btnFracao.Location = new System.Drawing.Point(12, 173);
             this.btnFracao.Name = "btnFracao";
             this.btnFracao.Size = new System.Drawing.Size(75, 23);
