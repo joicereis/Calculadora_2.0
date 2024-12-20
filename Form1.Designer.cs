@@ -59,18 +59,20 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(93, 131);
+            this.btnDelete.Enabled = false;
+            this.btnDelete.Location = new System.Drawing.Point(429, 340);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "CE";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Visible = false;
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(176, 131);
+            this.btnClear.Location = new System.Drawing.Point(12, 131);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.Size = new System.Drawing.Size(158, 23);
             this.btnClear.TabIndex = 3;
             this.btnClear.Text = "C";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -78,9 +80,9 @@
             // 
             // btnBackSpace
             // 
-            this.btnBackSpace.Location = new System.Drawing.Point(257, 131);
+            this.btnBackSpace.Location = new System.Drawing.Point(176, 131);
             this.btnBackSpace.Name = "btnBackSpace";
-            this.btnBackSpace.Size = new System.Drawing.Size(75, 23);
+            this.btnBackSpace.Size = new System.Drawing.Size(156, 23);
             this.btnBackSpace.TabIndex = 4;
             this.btnBackSpace.Text = "<-";
             this.btnBackSpace.UseVisualStyleBackColor = true;
@@ -238,12 +240,14 @@
             // 
             // btnNegate
             // 
-            this.btnNegate.Location = new System.Drawing.Point(12, 340);
+            this.btnNegate.Enabled = false;
+            this.btnNegate.Location = new System.Drawing.Point(348, 340);
             this.btnNegate.Name = "btnNegate";
             this.btnNegate.Size = new System.Drawing.Size(75, 23);
             this.btnNegate.TabIndex = 21;
             this.btnNegate.Text = "+ -";
             this.btnNegate.UseVisualStyleBackColor = true;
+            this.btnNegate.Visible = false;
             // 
             // btn0
             // 
@@ -277,7 +281,7 @@
             // 
             // btnPorcento
             // 
-            this.btnPorcento.Location = new System.Drawing.Point(14, 131);
+            this.btnPorcento.Location = new System.Drawing.Point(12, 340);
             this.btnPorcento.Name = "btnPorcento";
             this.btnPorcento.Size = new System.Drawing.Size(75, 23);
             this.btnPorcento.TabIndex = 0;
@@ -294,6 +298,7 @@
             this.txtResultado.Size = new System.Drawing.Size(320, 52);
             this.txtResultado.TabIndex = 25;
             this.txtResultado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtResultado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtResultado_KeyPress);
             // 
             // btnHistorico
             // 
@@ -331,7 +336,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 384);
+            this.ClientSize = new System.Drawing.Size(526, 384);
             this.Controls.Add(this.txtOperacaoEmCurso);
             this.Controls.Add(this.btnHistorico);
             this.Controls.Add(this.txtResultado);
