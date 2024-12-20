@@ -278,21 +278,21 @@ namespace Calculadora
             {
                 case "+":
                     resultadoOperacao = primeiroValor + segundoValor;
-                    operacaRealizada = $"{primeiroValor}{operacaoEmMemoria}{segundoValor} = {resultadoOperacao}";
+                    operacaRealizada = $"{primeiroValor} {operacaoEmMemoria} {segundoValor} = {resultadoOperacao}";
                     gravarHistorico(operacaRealizada);
                     preencherTxtHistorico(listaHistorico);
                     preencherTxtOperacaoEmCurso();
                     break;
                 case "-":
                     resultadoOperacao = primeiroValor - segundoValor;
-                    operacaRealizada = $"{primeiroValor}{operacaoEmMemoria}{segundoValor} = {resultadoOperacao}";
+                    operacaRealizada = $"{primeiroValor} {operacaoEmMemoria} {segundoValor} = {resultadoOperacao}";
                     gravarHistorico(operacaRealizada);
                     preencherTxtHistorico(listaHistorico);
                     preencherTxtOperacaoEmCurso();
                     break;
                 case "*":
                     resultadoOperacao = primeiroValor * segundoValor;
-                    operacaRealizada = $"{primeiroValor}{operacaoEmMemoria}{segundoValor} = {resultadoOperacao}";
+                    operacaRealizada = $"{primeiroValor} {operacaoEmMemoria} {segundoValor} = {resultadoOperacao}";
                     gravarHistorico(operacaRealizada);
                     preencherTxtHistorico(listaHistorico);
                     preencherTxtOperacaoEmCurso();
@@ -301,7 +301,7 @@ namespace Calculadora
                     if(segundoValor != 0)
                     {
                         resultadoOperacao = primeiroValor / segundoValor;
-                        operacaRealizada = $"{primeiroValor}{operacaoEmMemoria}{segundoValor} = {resultadoOperacao}";
+                        operacaRealizada = $"{primeiroValor} {operacaoEmMemoria} {segundoValor} = {resultadoOperacao}";
                         gravarHistorico(operacaRealizada);
                         preencherTxtHistorico(listaHistorico);
                         preencherTxtOperacaoEmCurso();
@@ -319,7 +319,7 @@ namespace Calculadora
                         resultadoOperacao = primeiroValor / segundoValor;
                         operacaoEmMemoria = "/";
                         operacao = null;
-                        operacaRealizada = $"{primeiroValor}{operacaoEmMemoria}{segundoValor} = {resultadoOperacao}";
+                        operacaRealizada = $"{primeiroValor} {operacaoEmMemoria} {segundoValor} = {resultadoOperacao}";
                         gravarHistorico(operacaRealizada);
                         preencherTxtHistorico(listaHistorico);
                         preencherTxtOperacaoEmCurso();
@@ -335,7 +335,7 @@ namespace Calculadora
                     resultadoOperacao = primeiroValor * segundoValor;
                     operacaoEmMemoria = "*";
                     operacao = null;
-                    operacaRealizada = $"{primeiroValor}{operacaoEmMemoria}{segundoValor} = {resultadoOperacao}";
+                    operacaRealizada = $"{primeiroValor} {operacaoEmMemoria} {segundoValor} = {resultadoOperacao}";
                     gravarHistorico(operacaRealizada);
                     preencherTxtHistorico(listaHistorico);
                     preencherTxtOperacaoEmCurso();
@@ -354,11 +354,6 @@ namespace Calculadora
                     operacaoEmMemoria = operacao;
                     break;
             }
-            /*
-            varResultado = resultadoOperacao;
-            txtResultado.Text = varResultado.ToString();
-            varResultado = null;
-            */
         }
      
         private void gravarHistorico(string operacaRealizada)
@@ -383,7 +378,7 @@ namespace Calculadora
             segundoValor = null;
             operacaoEmMemoria = operacao;
             operacao = null;
-            this.txtOperacaoEmCurso.Text = $"{primeiroValor}{operacaoEmMemoria}";
+            this.txtOperacaoEmCurso.Text = $"{primeiroValor} {operacaoEmMemoria}";
         }
 
         private void limparTudo()
@@ -395,6 +390,7 @@ namespace Calculadora
             segundoValor = null;
             resultadoOperacao = null;
             operacaoEmMemoria = null;
+            txtHistórico.Clear();
         }
 
         private void btnBackSpace_Click(object sender, EventArgs e)
@@ -417,6 +413,16 @@ namespace Calculadora
             if (e.KeyChar == ',' & txtResultado.Text.Contains(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void btnNegate_Click(object sender, EventArgs e)
+        {
+            if (txtResultado.Text != "")
+            {
+                double valor = double.Parse(txtResultado.Text);
+                valor = valor * -1;
+                txtResultado.Text = valor.ToString();
             }
         }
     } 
