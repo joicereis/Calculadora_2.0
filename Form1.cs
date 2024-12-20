@@ -25,6 +25,7 @@ namespace Calculadora
         static string operacaRealizada = null;
 
         List<string> listaHistorico = new List<string>();
+        StringBuilder stringHistorico = new StringBuilder();
         string historico = "";
 
         // - * * 
@@ -233,11 +234,6 @@ namespace Calculadora
                 
             }                
         }
-
-        private void btnHistorico_Click(object sender, EventArgs e)
-        {
-            exibirHistorico();
-        }
                
         private bool validarPrimeiroValorDigitado()
         {
@@ -284,18 +280,21 @@ namespace Calculadora
                     resultadoOperacao = primeiroValor + segundoValor;
                     operacaRealizada = $"{primeiroValor}{operacaoEmMemoria}{segundoValor} = {resultadoOperacao}";
                     gravarHistorico(operacaRealizada);
+                    preencherTxtHistorico(listaHistorico);
                     preencherTxtOperacaoEmCurso();
                     break;
                 case "-":
                     resultadoOperacao = primeiroValor - segundoValor;
                     operacaRealizada = $"{primeiroValor}{operacaoEmMemoria}{segundoValor} = {resultadoOperacao}";
                     gravarHistorico(operacaRealizada);
+                    preencherTxtHistorico(listaHistorico);
                     preencherTxtOperacaoEmCurso();
                     break;
                 case "*":
                     resultadoOperacao = primeiroValor * segundoValor;
                     operacaRealizada = $"{primeiroValor}{operacaoEmMemoria}{segundoValor} = {resultadoOperacao}";
                     gravarHistorico(operacaRealizada);
+                    preencherTxtHistorico(listaHistorico);
                     preencherTxtOperacaoEmCurso();
                     break;
                 case "/":
@@ -304,6 +303,7 @@ namespace Calculadora
                         resultadoOperacao = primeiroValor / segundoValor;
                         operacaRealizada = $"{primeiroValor}{operacaoEmMemoria}{segundoValor} = {resultadoOperacao}";
                         gravarHistorico(operacaRealizada);
+                        preencherTxtHistorico(listaHistorico);
                         preencherTxtOperacaoEmCurso();
                         break;
                     }
@@ -321,6 +321,7 @@ namespace Calculadora
                         operacao = null;
                         operacaRealizada = $"{primeiroValor}{operacaoEmMemoria}{segundoValor} = {resultadoOperacao}";
                         gravarHistorico(operacaRealizada);
+                        preencherTxtHistorico(listaHistorico);
                         preencherTxtOperacaoEmCurso();
                         break;
                     }
@@ -336,6 +337,7 @@ namespace Calculadora
                     operacao = null;
                     operacaRealizada = $"{primeiroValor}{operacaoEmMemoria}{segundoValor} = {resultadoOperacao}";
                     gravarHistorico(operacaRealizada);
+                    preencherTxtHistorico(listaHistorico);
                     preencherTxtOperacaoEmCurso();
                     break;
 
@@ -345,6 +347,7 @@ namespace Calculadora
                     operacao = null;
                     operacaRealizada = $"²V{primeiroValor} = {resultadoOperacao}";
                     gravarHistorico(operacaRealizada);
+                    preencherTxtHistorico(listaHistorico);
                     this.txtOperacaoEmCurso.Text = resultadoOperacao.ToString();
                     primeiroValor = resultadoOperacao;
                     segundoValor = null;
@@ -363,17 +366,16 @@ namespace Calculadora
             listaHistorico.Add(operacaRealizada);
         }
 
-        private void exibirHistorico()
+        private void preencherTxtHistorico(List<string> listaHistorico)
         {
-            foreach (string n in listaHistorico)
+            stringHistorico.Clear();
+            foreach (string itemLista in listaHistorico)
             {
-                //ajustar exibição de linhas de historico
-                historico += $"{n}       ";
+                stringHistorico.AppendLine(itemLista);
             }
-            MessageBox.Show(historico);
-            historico = "";
+            txtHistórico.Text = stringHistorico.ToString();
         }
-        
+
         private void preencherTxtOperacaoEmCurso()
         {
             this.txtResultado.Text = "";

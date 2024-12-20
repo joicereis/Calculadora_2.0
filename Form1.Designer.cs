@@ -52,15 +52,16 @@
             this.btnResultado = new System.Windows.Forms.Button();
             this.btnPorcento = new System.Windows.Forms.Button();
             this.txtResultado = new System.Windows.Forms.TextBox();
-            this.btnHistorico = new System.Windows.Forms.Button();
             this.btnFracao = new System.Windows.Forms.Button();
             this.txtOperacaoEmCurso = new System.Windows.Forms.TextBox();
+            this.txtHistórico = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnDelete
             // 
             this.btnDelete.Enabled = false;
-            this.btnDelete.Location = new System.Drawing.Point(429, 340);
+            this.btnDelete.Location = new System.Drawing.Point(345, 358);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 2;
@@ -70,9 +71,9 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(12, 131);
+            this.btnClear.Location = new System.Drawing.Point(93, 131);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(158, 23);
+            this.btnClear.Size = new System.Drawing.Size(120, 23);
             this.btnClear.TabIndex = 3;
             this.btnClear.Text = "C";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -80,9 +81,9 @@
             // 
             // btnBackSpace
             // 
-            this.btnBackSpace.Location = new System.Drawing.Point(176, 131);
+            this.btnBackSpace.Location = new System.Drawing.Point(219, 131);
             this.btnBackSpace.Name = "btnBackSpace";
-            this.btnBackSpace.Size = new System.Drawing.Size(156, 23);
+            this.btnBackSpace.Size = new System.Drawing.Size(113, 23);
             this.btnBackSpace.TabIndex = 4;
             this.btnBackSpace.Text = "<-";
             this.btnBackSpace.UseVisualStyleBackColor = true;
@@ -241,7 +242,7 @@
             // btnNegate
             // 
             this.btnNegate.Enabled = false;
-            this.btnNegate.Location = new System.Drawing.Point(348, 340);
+            this.btnNegate.Location = new System.Drawing.Point(345, 332);
             this.btnNegate.Name = "btnNegate";
             this.btnNegate.Size = new System.Drawing.Size(75, 23);
             this.btnNegate.TabIndex = 21;
@@ -281,7 +282,7 @@
             // 
             // btnPorcento
             // 
-            this.btnPorcento.Location = new System.Drawing.Point(12, 340);
+            this.btnPorcento.Location = new System.Drawing.Point(12, 131);
             this.btnPorcento.Name = "btnPorcento";
             this.btnPorcento.Size = new System.Drawing.Size(75, 23);
             this.btnPorcento.TabIndex = 0;
@@ -300,19 +301,8 @@
             this.txtResultado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtResultado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtResultado_KeyPress);
             // 
-            // btnHistorico
-            // 
-            this.btnHistorico.Location = new System.Drawing.Point(338, 12);
-            this.btnHistorico.Name = "btnHistorico";
-            this.btnHistorico.Size = new System.Drawing.Size(57, 30);
-            this.btnHistorico.TabIndex = 26;
-            this.btnHistorico.Text = "Histórico";
-            this.btnHistorico.UseVisualStyleBackColor = true;
-            this.btnHistorico.Click += new System.EventHandler(this.btnHistorico_Click);
-            // 
             // btnFracao
             // 
-            this.btnFracao.Enabled = false;
             this.btnFracao.Location = new System.Drawing.Point(12, 173);
             this.btnFracao.Name = "btnFracao";
             this.btnFracao.Size = new System.Drawing.Size(75, 23);
@@ -332,13 +322,32 @@
             this.txtOperacaoEmCurso.TabIndex = 27;
             this.txtOperacaoEmCurso.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // txtHistórico
+            // 
+            this.txtHistórico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHistórico.Location = new System.Drawing.Point(345, 57);
+            this.txtHistórico.Multiline = true;
+            this.txtHistórico.Name = "txtHistórico";
+            this.txtHistórico.Size = new System.Drawing.Size(109, 269);
+            this.txtHistórico.TabIndex = 28;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(353, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "Histórico";
+            // 
             // frmCalculadora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(526, 384);
+            this.ClientSize = new System.Drawing.Size(464, 384);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtHistórico);
             this.Controls.Add(this.txtOperacaoEmCurso);
-            this.Controls.Add(this.btnHistorico);
             this.Controls.Add(this.txtResultado);
             this.Controls.Add(this.btnResultado);
             this.Controls.Add(this.btnVirgula);
@@ -397,9 +406,10 @@
         private System.Windows.Forms.Button btnResultado;
         private System.Windows.Forms.Button btnPorcento;
         private System.Windows.Forms.TextBox txtResultado;
-        private System.Windows.Forms.Button btnHistorico;
         private System.Windows.Forms.Button btnFracao;
         private System.Windows.Forms.TextBox txtOperacaoEmCurso;
+        private System.Windows.Forms.TextBox txtHistórico;
+        private System.Windows.Forms.Label label1;
     }
 }
 
