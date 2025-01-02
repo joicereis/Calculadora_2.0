@@ -16,12 +16,12 @@ namespace Calculadora
     public partial class frmCalculadora : Form
     {
 
-        static string operacao = null;
+        string operacao = null;
         static double? primeiroValor = null;
         static double? segundoValor = null;
         static double? resultadoOperacao = null;
         static double? varResultado = null;
-        static string operacaoEmMemoria = null;
+        string operacaoEmMemoria = null;
         static string operacaRealizada = null;
 
         List<string> listaHistorico = new List<string>();
@@ -99,6 +99,27 @@ namespace Calculadora
         private void btnSoma_Click(object sender, EventArgs e)
         {
             operacao = "+";
+            validaValores(operacao);
+        }
+      
+        private void btnSubtrai_Click(object sender, EventArgs e)
+        {
+            operacao = "-";
+            validaValores(operacao);
+        }
+
+        private void btnMultiplica_Click(object sender, EventArgs e)
+        {
+            operacao = "*";
+            validaValores(operacao);
+        }
+        private void btnDivide_Click(object sender, EventArgs e)
+        {
+            operacao = "/";
+            validaValores(operacao);
+        }
+        private void validaValores(string operacao)
+        {
             if (operacaoEmMemoria == null)
                 operacaoEmMemoria = operacao;
 
@@ -106,7 +127,8 @@ namespace Calculadora
                 validarPrimeiroValorDigitado();
             else
             {
-                if (validarSegundoValorDigitado()){
+                if (validarSegundoValorDigitado())
+                {
                     calcularOperacoes();
                 }
             }
@@ -116,7 +138,7 @@ namespace Calculadora
             operacao = null;
             if (primeiroValor != null & operacaoEmMemoria != null & segundoValor != null)
                 calcularOperacoes();
-            else if(primeiroValor != null & operacaoEmMemoria != null & this.txtResultado.Text != "")
+            else if (primeiroValor != null & operacaoEmMemoria != null & this.txtResultado.Text != "")
             {
                 segundoValor = double.Parse(this.txtResultado.Text);
                 calcularOperacoes();
@@ -124,53 +146,6 @@ namespace Calculadora
             else
                 MessageBox.Show("Necessário digitar uma operação válida.");
             //operacao = null;
-        }
-
-        private void btnSubtrai_Click(object sender, EventArgs e)
-        {
-            operacao = "-";
-            if (operacaoEmMemoria == null)
-                operacaoEmMemoria = operacao;
-            if (primeiroValor == null)
-                validarPrimeiroValorDigitado();
-            else
-            {
-                if (validarSegundoValorDigitado())
-                {
-                    calcularOperacoes();
-                }
-            }
-        }
-
-        private void btnMultiplica_Click(object sender, EventArgs e)
-        {
-            operacao = "*";
-            if (operacaoEmMemoria == null)
-                operacaoEmMemoria = operacao;
-            if (primeiroValor == null)
-                validarPrimeiroValorDigitado();
-            else
-            {
-                if (validarSegundoValorDigitado())
-                {
-                    calcularOperacoes();
-                }
-            }
-        }
-        private void btnDivide_Click(object sender, EventArgs e)
-        {
-            operacao = "/";
-            if (operacaoEmMemoria == null)
-                operacaoEmMemoria = operacao;
-            if (primeiroValor == null)
-                validarPrimeiroValorDigitado();
-            else
-            {
-                if (validarSegundoValorDigitado())
-                {
-                    calcularOperacoes();
-                }
-            }
         }
 
         //TO DO: AJUSTAR ESSE MÉTODO
@@ -198,7 +173,6 @@ namespace Calculadora
                     calcularOperacoes();
                 }
         }
-
         private void btnRaizQuadrada_Click(object sender, EventArgs e)
         {
             operacao = "raiz";
@@ -391,6 +365,8 @@ namespace Calculadora
             resultadoOperacao = null;
             operacaoEmMemoria = null;
             txtHistórico.Clear();
+            stringHistorico.Clear();
+            listaHistorico.Clear();
         }
 
         private void btnBackSpace_Click(object sender, EventArgs e)
@@ -404,13 +380,25 @@ namespace Calculadora
 
         private void txtResultado_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Se não for botão de controle( como o botão de apagar ou delete) ou um número ou virgula
-            if (!char.IsControl(e.KeyChar) & !char.IsDigit(e.KeyChar) & e.KeyChar != ',')
+                        // Se não for botão de controle( como o botão de apagar ou delete) ou um número ou virgula
+            if(!char.IsControl(e.KeyChar) & !char.IsDigit(e.KeyChar) & e.KeyChar != ',')
             {
-                e.Handled = true;
+                if (e.KeyChar == '+' || e.KeyChar == '-' || e.KeyChar == '*' || e.KeyChar == '/')
+                {
+                    //MessageBox.Show($"Você digitou o símbolo aritmético: {e.KeyChar}");
+                    operacao = e.KeyChar.ToString();
+                    validaValores(operacao);
+
+                    txtResultado.Text = string.Empty;
+                    e.Handled = true;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
             }
             //Se for digitado virgula, é verificado se já possui no txtResultado
-            if (e.KeyChar == ',' & txtResultado.Text.Contains(e.KeyChar))
+            else if(e.KeyChar == ',' & txtResultado.Text.Contains(e.KeyChar))
             {
                 e.Handled = true;
             }
