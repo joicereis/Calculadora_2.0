@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace Calculadora
 {
-    internal class Calculadora
+    public class Calculadora
     {
+        public double? PrimeiroValor { get; set; }
+        public double? SegundoValor { get; set; }
+        public char? Operacao { get; set; }
+        public double Resultado { get; set; }
+
+
+        
     }
 }
+
+//Calculadora.PrimeiroValor
