@@ -60,20 +60,19 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Enabled = false;
-            this.btnDelete.Location = new System.Drawing.Point(287, 369);
+            this.btnDelete.Location = new System.Drawing.Point(80, 133);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.Size = new System.Drawing.Size(62, 31);
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "CE";
             this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Visible = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(80, 133);
+            this.btnClear.Location = new System.Drawing.Point(148, 133);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(97, 31);
+            this.btnClear.Size = new System.Drawing.Size(62, 31);
             this.btnClear.TabIndex = 3;
             this.btnClear.Text = "C";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -81,9 +80,9 @@
             // 
             // btnBackSpace
             // 
-            this.btnBackSpace.Location = new System.Drawing.Point(183, 133);
+            this.btnBackSpace.Location = new System.Drawing.Point(216, 133);
             this.btnBackSpace.Name = "btnBackSpace";
-            this.btnBackSpace.Size = new System.Drawing.Size(95, 31);
+            this.btnBackSpace.Size = new System.Drawing.Size(62, 31);
             this.btnBackSpace.TabIndex = 4;
             this.btnBackSpace.Text = "<-";
             this.btnBackSpace.UseVisualStyleBackColor = true;

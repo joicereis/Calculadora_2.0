@@ -209,7 +209,6 @@ namespace Calculadora
                     calcularOperacoes();
                 }
                 calculadora.PrimeiroValor = null;
-                
             }                
         }
                
@@ -403,6 +402,11 @@ namespace Calculadora
                 valor = valor * -1;
                 txtResultado.Text = valor.ToString();
             }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            txtResultado.Clear();
         }
     } 
         
