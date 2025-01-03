@@ -17,12 +17,12 @@ namespace Calculadora
     {
 
         string operacao = null;
-        static double? primeiroValor = null;
-        static double? segundoValor = null;
-        static double? resultadoOperacao = null;
-        static double? varResultado = null;
+        double? primeiroValor = null;
+        double? segundoValor = null;
+        double? resultadoOperacao = null;
+        double? varResultado = null;
         string operacaoEmMemoria = null;
-        static string operacaRealizada = null;
+        string operacaRealizada = null;
 
         List<string> listaHistorico = new List<string>();
         StringBuilder stringHistorico = new StringBuilder();
@@ -136,15 +136,22 @@ namespace Calculadora
         private void btnResultado_Click(object sender, EventArgs e)
         {
             operacao = null;
-            if (primeiroValor != null & operacaoEmMemoria != null & segundoValor != null)
-                calcularOperacoes();
-            else if (primeiroValor != null & operacaoEmMemoria != null & this.txtResultado.Text != "")
+            encontraResultado(operacao);
+        }
+
+        private void encontraResultado(string operacao)
+        {
+            if (primeiroValor != null & operacaoEmMemoria != null & this.txtResultado.Text != "")
             {
                 segundoValor = double.Parse(this.txtResultado.Text);
                 calcularOperacoes();
             }
             else
+            {
                 MessageBox.Show("Necessário digitar uma operação válida.");
+                txtResultado.Clear();
+            }
+                
             //operacao = null;
         }
 
@@ -380,23 +387,32 @@ namespace Calculadora
 
         private void txtResultado_KeyPress(object sender, KeyPressEventArgs e)
         {
-                        // Se não for botão de controle( como o botão de apagar ou delete) ou um número ou virgula
+            // Se não for botão de controle( como o botão de apagar ou delete) ou um número ou virgula
             if(!char.IsControl(e.KeyChar) & !char.IsDigit(e.KeyChar) & e.KeyChar != ',')
             {
                 if (e.KeyChar == '+' || e.KeyChar == '-' || e.KeyChar == '*' || e.KeyChar == '/')
                 {
-                    //MessageBox.Show($"Você digitou o símbolo aritmético: {e.KeyChar}");
                     operacao = e.KeyChar.ToString();
                     validaValores(operacao);
-
-                    txtResultado.Text = string.Empty;
+                    txtResultado.Clear();
                     e.Handled = true;
-                }
+                }                
                 else
                 {
                     e.Handled = true;
                 }
             }
+
+            else if (e.KeyChar == (char)Keys.Enter)
+            //Converte Keys.Enter para char para fazer a comparação já que o Enter é enum e o KeyChar é do tipo char
+            {
+                operacao = null;
+                MessageBox.Show("Tecla Enter pressionada!");
+                encontraResultado(operacao);
+                txtResultado.Clear();
+                e.Handled = true;
+            }
+
             //Se for digitado virgula, é verificado se já possui no txtResultado
             else if(e.KeyChar == ',' & txtResultado.Text.Contains(e.KeyChar))
             {
