@@ -16,6 +16,7 @@ namespace Calculadora
         public char? OperacaoEmMemoria { get; set; }
         public string TxtResultado { get; set; }
         public string TxtOperacaoEmCurso { get; set; }
+        public string OperacaRealizada = null;
 
         public void validaValores()
         {
@@ -121,12 +122,12 @@ namespace Calculadora
                     break;
                     */
             }
-            //operacaRealizada = $"{Valor1} {OperacaoEmMemoria} {Valor2} = {Resultado}";
+            OperacaRealizada = $"{Valor1} {OperacaoEmMemoria} {Valor2} = {Resultado}";
             //gravarHistorico(operacaRealizada);
-            definoNovaOperacaoEmCurso();
+            defineNovaOperacaoEmCurso();
         }
 
-        private void definoNovaOperacaoEmCurso()
+        private void defineNovaOperacaoEmCurso()
         {
             TxtResultado = "";
             Valor1 = Resultado;

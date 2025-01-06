@@ -15,8 +15,7 @@ namespace Calculadora
 {
     public partial class frmCalculadora : Form
     {
-        Calculadora calculadora = new Calculadora();
-        string operacaRealizada = null;
+        Calculadora calculadora = new Calculadora();       
 
         List<string> listaHistorico = new List<string>();
         StringBuilder stringHistorico = new StringBuilder();
@@ -92,8 +91,7 @@ namespace Calculadora
             calculadora.Operacao = '+';
             calculadora.TxtResultado = txtResultado.Text;
             calculadora.validaValores();
-            txtResultado.Text = calculadora.TxtResultado;
-            txtOperacaoEmCurso.Text = calculadora.TxtOperacaoEmCurso;
+            preencherTxtOperacaoEmCurso();
         }
       
         private void btnSubtrai_Click(object sender, EventArgs e)
@@ -101,8 +99,7 @@ namespace Calculadora
             calculadora.Operacao = '-';
             calculadora.TxtResultado = txtResultado.Text;
             calculadora.validaValores();
-            txtResultado.Text = calculadora.TxtResultado;
-            txtOperacaoEmCurso.Text = calculadora.TxtOperacaoEmCurso;
+            preencherTxtOperacaoEmCurso();
         }
 
         private void btnMultiplica_Click(object sender, EventArgs e)
@@ -110,68 +107,31 @@ namespace Calculadora
             calculadora.Operacao = '*';
             calculadora.TxtResultado = txtResultado.Text;
             calculadora.validaValores();
-            txtResultado.Text = calculadora.TxtResultado;
-            txtOperacaoEmCurso.Text = calculadora.TxtOperacaoEmCurso;
+            preencherTxtOperacaoEmCurso();
         }
         private void btnDivide_Click(object sender, EventArgs e)
         {
             calculadora.Operacao = '/';
             calculadora.TxtResultado = txtResultado.Text;
             calculadora.validaValores();
-            txtResultado.Text = calculadora.TxtResultado;
-            txtOperacaoEmCurso.Text = calculadora.TxtOperacaoEmCurso;
+            preencherTxtOperacaoEmCurso();
         }
-        
-        /*
-        private void validaValores(char? operacao)
-        {
-            if (calculadora.OperacaoEmMemoria == null)
-                calculadora.OperacaoEmMemoria = operacao;
-
-            if (calculadora.Valor1 == null)
-                validarPrimeiroValorDigitado();
-            else
-            {
-                if (validarSegundoValorDigitado())
-                {
-                    calcularOperacoes();
-                }
-            }
-        }
-        */
         
         private void btnResultado_Click(object sender, EventArgs e)
         {
             calculadora.Operacao = null;
             calculadora.TxtResultado = txtResultado.Text;
             calculadora.encontraResultado(calculadora.Operacao);
-            txtResultado.Text = calculadora.TxtResultado.ToString();
-            txtOperacaoEmCurso.Text = calculadora.TxtOperacaoEmCurso;
+            preencherTxtOperacaoEmCurso();
         }
 
-        /*
-        private void encontraResultado(char? operacao)
-        {
-            if (calculadora.Valor1 != null & calculadora.OperacaoEmMemoria != null & this.txtResultado.Text != "")
-            {
-                calculadora.Valor2 = double.Parse(this.txtResultado.Text);
-                calcularOperacoes();
-            }
-            else
-            {
-                MessageBox.Show("Necessário digitar uma operação válida.");
-                txtResultado.Clear();
-            }
-        }
-        */
 
-
-
-        //TO DO: AJUSTAR ESSE MÉTODO
+        //TO DO: AJUSTAR MÉTODO FRAÇACO E PASSAR PARA A CLASSE CALCULADORA
         private void btnFracao_Click(object sender, EventArgs e)
         {
             calculadora.Operacao = '/';
             calculadora.OperacaoEmMemoria = calculadora.Operacao;
+            calculadora.TxtResultado = txtResultado.Text;
             if (calculadora.Valor1 == null)
                 if (calculadora.validarPrimeiroValorDigitado())
                 {
@@ -181,6 +141,7 @@ namespace Calculadora
                 }
         }
 
+        // AJUSTAR MÉTODO DE POTÊNCIA E EXIBIÇÃO DE SEU RESULTADO PELA CLASSE CALCULADORA
         private void btnPotencia_Click(object sender, EventArgs e)
         {
             calculadora.Operacao = '*';
@@ -194,9 +155,12 @@ namespace Calculadora
                     calculadora.calcularOperacoes();
                 }
             }
+
             txtResultado.Text = calculadora.TxtResultado;
             txtOperacaoEmCurso.Text = calculadora.TxtOperacaoEmCurso;
         }
+
+        // AJUSTAR MÉTODO DE RAIZ QUADRADA E A EXIBIÇÃO DE SEU RESULTADO PELA CLASSE CALCULADORA
         private void btnRaizQuadrada_Click(object sender, EventArgs e)
         {
             calculadora.Operacao = 'V';
@@ -208,6 +172,7 @@ namespace Calculadora
                 }
         }
 
+        // AJUSTAR MÉTODO DE PORCENTO E A EXIBIÇÃO DE SEU RESULTADO PELA CLASSE CALCULADORA
         private void btnPorcento_Click(object sender, EventArgs e)
         {
             if (calculadora.OperacaoEmMemoria == null)
@@ -232,84 +197,12 @@ namespace Calculadora
             }                
         }
         
-        /*
-        private bool validarPrimeiroValorDigitado()
-        {
-            if (calculadora.Valor1 == null & this.txtResultado.Text == "")
-            {
-                MessageBox.Show("Necessário digitar um valor para efetuar a operação.");
-                return false;
-            }
-            else if (calculadora.Valor1 == null & this.txtResultado.Text != "")
-            {
-                calculadora.Valor1 = double.Parse(this.txtResultado.Text);
-                this.txtOperacaoEmCurso.Text = $"{calculadora.Valor1} {calculadora.OperacaoEmMemoria}";
-                this.txtResultado.Text = "";
-                return true;
-            }
-            else
-                return false;
-        }
-        */
-
-        /*
-        private bool validarSegundoValorDigitado()
-        {
-            if (calculadora.Valor2 == null & this.txtResultado.Text == "")
-            {
-                calculadora.OperacaoEmMemoria = calculadora.Operacao;
-                this.txtOperacaoEmCurso.Text = $"{calculadora.Valor1} {calculadora.OperacaoEmMemoria}";
-                return false;
-            }
-            else if(calculadora.Valor2 == null & this.txtResultado.Text != "")
-            {
-                calculadora.Valor2 = double.Parse(this.txtResultado.Text);
-                this.txtResultado.Text = "";
-                return true;
-            }
-            else
-                return false;
-        }
-        */
   
         /*
         private void calcularOperacoes()
         {
             switch (calculadora.OperacaoEmMemoria)
-            {
-                case '+':
-                    calculadora.Resultado = calculadora.Valor1 + calculadora.Valor2;
-                    operacaRealizada = $"{calculadora.Valor1} {calculadora.OperacaoEmMemoria} {calculadora.Valor2} = {calculadora.Resultado}";
-                    gravarHistorico(operacaRealizada);
-                    preencherTxtOperacaoEmCurso();
-                    break;
-                case '-':
-                    calculadora.Resultado = calculadora.Valor1 - calculadora.Valor2;
-                    operacaRealizada = $"{calculadora.Valor1} {calculadora.OperacaoEmMemoria} {calculadora.Valor2} = {calculadora.Resultado}";
-                    gravarHistorico(operacaRealizada);
-                    preencherTxtOperacaoEmCurso();
-                    break;
-                case '*':
-                    calculadora.Resultado = calculadora.Valor1 * calculadora.Valor2;
-                    operacaRealizada = $"{calculadora.Valor1} {calculadora.OperacaoEmMemoria} {calculadora.Valor2} = {calculadora.Resultado}";
-                    gravarHistorico(operacaRealizada);
-                    preencherTxtHistorico(listaHistorico);
-                    break;
-                case '/':
-                    if(calculadora.Valor2 != 0)
-                    {
-                        calculadora.Resultado = calculadora.Valor1 / calculadora.Valor2;
-                        operacaRealizada = $"{calculadora.Valor1} {calculadora.OperacaoEmMemoria} {calculadora.Valor2} = {calculadora.Resultado}";
-                        gravarHistorico(operacaRealizada);
-                        preencherTxtOperacaoEmCurso();
-                        break;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Não é possível dividir por zero.");
-                        limparTudo();
-                        break;
-                    }
+            {              
                 case '²':
                     calculadora.Resultado = calculadora.Valor1 * calculadora.Valor2;
                     calculadora.OperacaoEmMemoria = '*';
@@ -356,16 +249,11 @@ namespace Calculadora
         private void preencherTxtOperacaoEmCurso()
         {
             txtResultado.Text = calculadora.TxtResultado;
-
-            /*
-            calculadora.Valor1 = calculadora.Resultado;
-            calculadora.Valor2 = null;
-            calculadora.OperacaoEmMemoria = calculadora.Operacao;
-            calculadora.Operacao = null;
-            */
             txtOperacaoEmCurso.Text = calculadora.TxtOperacaoEmCurso;
         }
 
+
+        //IMPLANTADO MÉTODO LIMPARTUDO()
         private void limparTudo()
         {
             this.txtOperacaoEmCurso.Text = "";
@@ -380,6 +268,8 @@ namespace Calculadora
             listaHistorico.Clear();
         }
 
+
+        //IMPLANTADO MÉTODO LIMPARTUDO()
         private void btnBackSpace_Click(object sender, EventArgs e)
         {
             string valortxtResultado = txtResultado.Text;
