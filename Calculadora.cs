@@ -16,7 +16,12 @@ namespace Calculadora
         public char? OperacaoEmMemoria { get; set; }
         public string TxtResultado { get; set; }
         public string TxtOperacaoEmCurso { get; set; }
+
         public string OperacaRealizada = null;
+
+        public List<string> listaHistorico = new List<string>();
+        public StringBuilder stringHistorico = new StringBuilder();
+
 
         public void validaValores()
         {
@@ -123,7 +128,7 @@ namespace Calculadora
                     */
             }
             OperacaRealizada = $"{Valor1} {OperacaoEmMemoria} {Valor2} = {Resultado}";
-            //gravarHistorico(operacaRealizada);
+            gravarHistorico(OperacaRealizada);
             defineNovaOperacaoEmCurso();
         }
 
@@ -151,7 +156,32 @@ namespace Calculadora
             }
         }
 
+        private void gravarHistorico(string operacaRealizada)
+        {
+            listaHistorico.Add(operacaRealizada);
+            preencherTxtHistorico(listaHistorico);
+        }
 
+        public void preencherTxtHistorico(List<string> listaHistorico)
+        {
+            stringHistorico.Clear();
+            foreach (string itemLista in listaHistorico)
+            {
+                stringHistorico.AppendLine(itemLista);
+            }
+            //txtHistórico.Text = stringHistorico.ToString();
+        }
+
+        public void limparTudo()
+        {
+            Operacao = null;
+            Valor1 = null;
+            Valor2 = null;
+            Resultado = null;
+            OperacaoEmMemoria = null;        
+            stringHistorico.Clear();
+            listaHistorico.Clear();
+        }
 
     }
 }

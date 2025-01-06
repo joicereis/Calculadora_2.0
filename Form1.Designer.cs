@@ -56,6 +56,7 @@
             this.txtOperacaoEmCurso = new System.Windows.Forms.TextBox();
             this.txtHistórico = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnAtualizaHistorico = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDelete
@@ -341,11 +342,22 @@
             this.label1.TabIndex = 29;
             this.label1.Text = "Histórico";
             // 
+            // btnAtualizaHistorico
+            // 
+            this.btnAtualizaHistorico.Location = new System.Drawing.Point(447, 38);
+            this.btnAtualizaHistorico.Name = "btnAtualizaHistorico";
+            this.btnAtualizaHistorico.Size = new System.Drawing.Size(55, 19);
+            this.btnAtualizaHistorico.TabIndex = 30;
+            this.btnAtualizaHistorico.Text = "Atualizar";
+            this.btnAtualizaHistorico.UseVisualStyleBackColor = true;
+            this.btnAtualizaHistorico.Click += new System.EventHandler(this.btnAtualizaHistorico_Click);
+            // 
             // frmCalculadora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(516, 395);
+            this.Controls.Add(this.btnAtualizaHistorico);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtHistórico);
             this.Controls.Add(this.txtOperacaoEmCurso);
@@ -413,6 +425,7 @@
         private System.Windows.Forms.TextBox txtOperacaoEmCurso;
         private System.Windows.Forms.TextBox txtHistórico;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnAtualizaHistorico;
     }
 }
 

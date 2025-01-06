@@ -15,10 +15,7 @@ namespace Calculadora
 {
     public partial class frmCalculadora : Form
     {
-        Calculadora calculadora = new Calculadora();       
-
-        List<string> listaHistorico = new List<string>();
-        StringBuilder stringHistorico = new StringBuilder();
+        Calculadora calculadora = new Calculadora();
 
         // - * * 
         public frmCalculadora()
@@ -84,7 +81,10 @@ namespace Calculadora
         // TO DO: AJUSTAR ESSE MÉTODO
         private void btnClear_Click(object sender, EventArgs e)
         {
-            limparTudo();
+            calculadora.limparTudo();
+            txtOperacaoEmCurso.Text = "";
+            txtResultado.Text = "";
+            txtHistórico.Clear();
         }
         private void btnSoma_Click(object sender, EventArgs e)
         {
@@ -229,45 +229,11 @@ namespace Calculadora
      
         */
 
-
-        private void gravarHistorico(string operacaRealizada)
-        {
-            listaHistorico.Add(operacaRealizada);
-            preencherTxtHistorico(listaHistorico);
-        }
-
-        private void preencherTxtHistorico(List<string> listaHistorico)
-        {
-            stringHistorico.Clear();
-            foreach (string itemLista in listaHistorico)
-            {
-                stringHistorico.AppendLine(itemLista);
-            }
-            txtHistórico.Text = stringHistorico.ToString();
-        }
-
         private void preencherTxtOperacaoEmCurso()
         {
             txtResultado.Text = calculadora.TxtResultado;
             txtOperacaoEmCurso.Text = calculadora.TxtOperacaoEmCurso;
         }
-
-
-        //IMPLANTADO MÉTODO LIMPARTUDO()
-        private void limparTudo()
-        {
-            this.txtOperacaoEmCurso.Text = "";
-            this.txtResultado.Text = "";
-            calculadora.Operacao = null;
-            calculadora.Valor1 = null;
-            calculadora.Valor2 = null;
-            calculadora.Resultado = null;
-            calculadora.OperacaoEmMemoria = null;
-            txtHistórico.Clear();
-            stringHistorico.Clear();
-            listaHistorico.Clear();
-        }
-
 
         //IMPLANTADO MÉTODO LIMPARTUDO()
         private void btnBackSpace_Click(object sender, EventArgs e)
@@ -329,6 +295,11 @@ namespace Calculadora
         private void btnDelete_Click(object sender, EventArgs e)
         {
             txtResultado.Clear();
+        }
+
+        private void btnAtualizaHistorico_Click(object sender, EventArgs e)
+        {
+            txtHistórico.Text = calculadora.stringHistorico.ToString();
         }
     } 
         
