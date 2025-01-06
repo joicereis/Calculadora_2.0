@@ -14,7 +14,6 @@ namespace Calculadora
         public char? Operacao { get; set; }
         public double? Resultado { get; set; }
         public char? OperacaoEmMemoria { get; set; }
-
         public string TxtResultado { get; set; }
         public string TxtOperacaoEmCurso { get; set; }
 
@@ -137,7 +136,19 @@ namespace Calculadora
             TxtOperacaoEmCurso = $"{Valor1} {OperacaoEmMemoria}";
         }
 
-
+        public void encontraResultado(char? operacao)
+        {
+            if (Valor1 != null & OperacaoEmMemoria != null & TxtResultado != "")
+            {
+                Valor2 = double.Parse(TxtResultado);
+                calcularOperacoes();
+            }
+            else
+            {
+                MessageBox.Show("Necessário digitar uma operação válida.");
+                TxtResultado = "";
+            }
+        }
 
 
 

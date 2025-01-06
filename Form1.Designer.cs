@@ -100,6 +100,7 @@
             // 
             // btnRaizQuadrada
             // 
+            this.btnRaizQuadrada.Enabled = false;
             this.btnRaizQuadrada.Location = new System.Drawing.Point(148, 175);
             this.btnRaizQuadrada.Name = "btnRaizQuadrada";
             this.btnRaizQuadrada.Size = new System.Drawing.Size(62, 31);
@@ -280,6 +281,7 @@
             // 
             // btnPorcento
             // 
+            this.btnPorcento.Enabled = false;
             this.btnPorcento.Location = new System.Drawing.Point(12, 133);
             this.btnPorcento.Name = "btnPorcento";
             this.btnPorcento.Size = new System.Drawing.Size(62, 31);

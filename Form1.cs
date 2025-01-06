@@ -143,9 +143,13 @@ namespace Calculadora
         private void btnResultado_Click(object sender, EventArgs e)
         {
             calculadora.Operacao = null;
-            encontraResultado(calculadora.Operacao);
+            calculadora.TxtResultado = txtResultado.Text;
+            calculadora.encontraResultado(calculadora.Operacao);
+            txtResultado.Text = calculadora.TxtResultado.ToString();
+            txtOperacaoEmCurso.Text = calculadora.TxtOperacaoEmCurso;
         }
 
+        /*
         private void encontraResultado(char? operacao)
         {
             if (calculadora.Valor1 != null & calculadora.OperacaoEmMemoria != null & this.txtResultado.Text != "")
@@ -159,6 +163,9 @@ namespace Calculadora
                 txtResultado.Clear();
             }
         }
+        */
+
+
 
         //TO DO: AJUSTAR ESSE MÉTODO
         private void btnFracao_Click(object sender, EventArgs e)
@@ -170,7 +177,7 @@ namespace Calculadora
                 {
                     calculadora.Valor2 = calculadora.Valor1;
                     calculadora.Valor1 = 1;
-                    calcularOperacoes();
+                    calculadora.calcularOperacoes();
                 }
         }
 
@@ -197,7 +204,7 @@ namespace Calculadora
             if (calculadora.Valor1 == null)
                 if (calculadora.validarPrimeiroValorDigitado())
                 {
-                    calcularOperacoes();
+                    calculadora.calcularOperacoes();
                 }
         }
 
@@ -213,13 +220,13 @@ namespace Calculadora
                 {
                     calculadora.Valor2 = (calculadora.Valor2 / 100) * calculadora.Valor1;
                     calculadora.Operacao = null;
-                    calcularOperacoes();
+                    calculadora.calcularOperacoes();
                 }
                 else
                 {
                     calculadora.Valor2 = (calculadora.Valor2 / 100);
                     calculadora.Operacao = null;
-                    calcularOperacoes();
+                    calculadora.calcularOperacoes();
                 }
                 calculadora.Valor1 = null;
             }                
@@ -382,6 +389,8 @@ namespace Calculadora
             }
         }
 
+
+        //PASSAR O KEYPRESS PARA A CLASSE CALCULADORA
         private void txtResultado_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Se não for botão de controle( como o botão de apagar ou delete) ou um número ou virgula
@@ -405,7 +414,7 @@ namespace Calculadora
             {
                 calculadora.Operacao = null;
                 MessageBox.Show("Tecla Enter pressionada!");
-                encontraResultado(calculadora.Operacao);
+                calculadora.encontraResultado(calculadora.Operacao);
                 txtResultado.Clear();
                 e.Handled = true;
             }
