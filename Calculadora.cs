@@ -178,10 +178,9 @@ namespace Calculadora
             Valor1 = null;
             Valor2 = null;
             Resultado = null;
-            OperacaoEmMemoria = null;        
+            OperacaoEmMemoria = null;
             stringHistorico.Clear();
             listaHistorico.Clear();
         }
-
     }
 }

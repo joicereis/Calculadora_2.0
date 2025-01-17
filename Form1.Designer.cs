@@ -390,6 +390,7 @@
             this.MinimizeBox = false;
             this.Name = "frmCalculadora";
             this.Text = "Calculadora";
+            this.Shown += new System.EventHandler(this.frmCalculadora_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

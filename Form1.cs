@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -249,13 +250,27 @@ namespace Calculadora
         //PASSAR O KEYPRESS PARA A CLASSE CALCULADORA
         private void txtResultado_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == (char)Keys.Enter)
+            //Converte Keys.Enter para char para fazer a comparação já que o Enter é enum e o KeyChar é do tipo char
+            {
+                calculadora.Operacao = null;
+                //MessageBox.Show("Tecla Enter pressionada!");
+                calculadora.TxtResultado = txtResultado.Text;
+                calculadora.encontraResultado(calculadora.Operacao);
+                preencherTxtOperacaoEmCurso();
+                txtResultado.Clear();
+                e.Handled = true;
+            }
+
             // Se não for botão de controle( como o botão de apagar ou delete) ou um número ou virgula
-            if(!char.IsControl(e.KeyChar) & !char.IsDigit(e.KeyChar) & e.KeyChar != ',')
+            else if (!char.IsControl(e.KeyChar) & !char.IsDigit(e.KeyChar) & e.KeyChar != ',')
             {
                 if (e.KeyChar == '+' || e.KeyChar == '-' || e.KeyChar == '*' || e.KeyChar == '/')
                 {
                     calculadora.Operacao = e.KeyChar;
+                    calculadora.TxtResultado = txtResultado.Text;
                     calculadora.validaValores();
+                    preencherTxtOperacaoEmCurso();
                     txtResultado.Clear();
                     e.Handled = true;
                 }                
@@ -265,22 +280,13 @@ namespace Calculadora
                 }
             }
 
-            else if (e.KeyChar == (char)Keys.Enter)
-            //Converte Keys.Enter para char para fazer a comparação já que o Enter é enum e o KeyChar é do tipo char
-            {
-                calculadora.Operacao = null;
-                MessageBox.Show("Tecla Enter pressionada!");
-                calculadora.encontraResultado(calculadora.Operacao);
-                txtResultado.Clear();
-                e.Handled = true;
-            }
-
             //Se for digitado virgula, é verificado se já possui no txtResultado
             else if(e.KeyChar == ',' & txtResultado.Text.Contains(e.KeyChar))
             {
                 e.Handled = true;
             }
-        }
+        
+       }
 
         private void btnNegate_Click(object sender, EventArgs e)
         {
@@ -300,6 +306,24 @@ namespace Calculadora
         private void btnAtualizaHistorico_Click(object sender, EventArgs e)
         {
             txtHistórico.Text = calculadora.stringHistorico.ToString();
+        }
+
+        private void frmCalculadora_Shown(object sender, EventArgs e)
+        {
+            txtResultado.Focus();
+            HideCaret();
+        }
+
+        [DllImport("user32.dll")]
+        static extern bool HideCaret(IntPtr hWnd);
+        public void HideCaret()
+        {
+            HideCaret(txtResultado.Handle);
+        }
+
+        private void txtResultado_Click(object sender, EventArgs e)
+        {
+            HideCaret();
         }
     } 
         
