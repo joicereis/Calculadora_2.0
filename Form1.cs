@@ -133,18 +133,16 @@ namespace Calculadora
         
         private void btnFracao_Click(object sender, EventArgs e)
         {
-            /*
+
             calculadora.Operacao = '/';
             calculadora.OperacaoEmMemoria = calculadora.Operacao;
             calculadora.TxtResultado = txtResultado.Text;
-            if (calculadora.Valor1 == null)
-                if (calculadora.validarPrimeiroValorDigitado())
-                {
-                    calculadora.Valor2 = calculadora.Valor1;
-                    calculadora.Valor1 = 1;
-                    calculadora.calcularOperacoes(OperacaoEmMemoria);
-                }
-            */
+
+            calculadoraCientifica.CalcularFracao();
+
+            txtResultado.Text = calculadora.TxtResultado;
+            txtOperacaoEmCurso.Text = calculadora.TxtOperacaoEmCurso;
+
         }
 
         // AJUSTAR MÉTODO DE POTÊNCIA E EXIBIÇÃO DE SEU RESULTADO PELA CLASSE CALCULADORA
@@ -164,15 +162,15 @@ namespace Calculadora
         // AJUSTAR MÉTODO DE RAIZ QUADRADA E A EXIBIÇÃO DE SEU RESULTADO PELA CLASSE CALCULADORA
         private void btnRaizQuadrada_Click(object sender, EventArgs e)
         {
-            /*
-            calculadora.Operacao = 'V';
-            calculadora.OperacaoEmMemoria = calculadora.Operacao;
-            if (calculadora.Valor1 == null)
-                if (calculadora.validarPrimeiroValorDigitado())
-                {
-                    calculadora.calcularOperacoes(OperacaoEmMemoria);
-                }
-            */
+
+            calculadoraCientifica.Operacao = 'V';
+            calculadoraCientifica.OperacaoEmMemoria = calculadoraCientifica.Operacao;
+            calculadoraCientifica.TxtResultado = txtResultado.Text;
+            calculadoraCientifica.CalcularRaizQuadrada();
+
+            txtResultado.Text = calculadoraCientifica.TxtResultado;
+            txtOperacaoEmCurso.Text = calculadoraCientifica.TxtOperacaoEmCurso;
+
         }
 
         // AJUSTAR MÉTODO DE PORCENTO E A EXIBIÇÃO DE SEU RESULTADO PELA CLASSE CALCULADORA
@@ -311,6 +309,7 @@ namespace Calculadora
         private void btnAtualizaHistorico_Click(object sender, EventArgs e)
         {
             txtHistórico.Text = calculadora.stringHistorico.ToString();
+            MessageBox.Show(calculadora.stringHistorico.ToString());
         }
 
         private void frmCalculadora_Shown(object sender, EventArgs e)

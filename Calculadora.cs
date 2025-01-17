@@ -111,28 +111,14 @@ namespace Calculadora
                         //limparTudo();
                         break;
                     }
-
-                    /*
-                case 'V':
-                    calculadora.Resultado = Math.Sqrt(Convert.ToDouble(calculadora.Valor1));
-                    //calculadora.OperacaoEmMemoria = null;
-                    calculadora.Operacao = null;
-                    operacaRealizada = $"²V{calculadora.Valor1} = {calculadora.Resultado}";
-                    gravarHistorico(operacaRealizada);
-                    preencherTxtHistorico(listaHistorico);
-                    this.txtOperacaoEmCurso.Text = calculadora.Resultado.ToString();
-                    calculadora.Valor1 = calculadora.Resultado;
-                    calculadora.Valor2 = null;
-                    calculadora.OperacaoEmMemoria = calculadora.Operacao;
-                    break;
-                    */
+                    
             }
             OperacaRealizada = $"{Valor1} {OperacaoEmMemoria} {Valor2} = {Resultado}";
             gravarHistorico(OperacaRealizada);
             defineNovaOperacaoEmCurso();
         }
 
-        private void defineNovaOperacaoEmCurso()
+        public void defineNovaOperacaoEmCurso()
         {
             TxtResultado = "";
             Valor1 = Resultado;
@@ -156,7 +142,7 @@ namespace Calculadora
             }
         }
 
-        private void gravarHistorico(string operacaRealizada)
+        public void gravarHistorico(string operacaRealizada)
         {
             listaHistorico.Add(operacaRealizada);
             preencherTxtHistorico(listaHistorico);
