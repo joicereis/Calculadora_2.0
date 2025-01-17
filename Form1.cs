@@ -134,11 +134,10 @@ namespace Calculadora
         private void btnFracao_Click(object sender, EventArgs e)
         {
 
-            calculadoraCientifica.Operacao = '/';
-            calculadoraCientifica.OperacaoEmMemoria = calculadoraCientifica.Operacao;
+            calculadoraCientifica.Operacao = 'F';
             calculadoraCientifica.TxtResultado = txtResultado.Text;
 
-            calculadoraCientifica.CalcularFracao();
+            calculadoraCientifica.CalcularOperacoesCientificas();
 
             txtResultado.Text = calculadoraCientifica.TxtResultado;
             txtOperacaoEmCurso.Text = calculadoraCientifica.TxtOperacaoEmCurso;
@@ -148,11 +147,10 @@ namespace Calculadora
         // AJUSTAR MÉTODO DE POTÊNCIA E EXIBIÇÃO DE SEU RESULTADO PELA CLASSE CALCULADORA
         private void btnPotencia_Click(object sender, EventArgs e)
         {
-            calculadoraCientifica.Operacao = '*';
-            calculadoraCientifica.OperacaoEmMemoria = calculadoraCientifica.Operacao;
+            calculadoraCientifica.Operacao = 'P';
             calculadoraCientifica.TxtResultado = txtResultado.Text;
 
-            calculadoraCientifica.CalcularPotencia();
+            calculadoraCientifica.CalcularOperacoesCientificas();
 
             txtResultado.Text = calculadoraCientifica.TxtResultado;
             txtOperacaoEmCurso.Text = calculadoraCientifica.TxtOperacaoEmCurso;
@@ -163,10 +161,10 @@ namespace Calculadora
         private void btnRaizQuadrada_Click(object sender, EventArgs e)
         {
 
-            calculadoraCientifica.Operacao = 'V';
-            calculadoraCientifica.OperacaoEmMemoria = calculadoraCientifica.Operacao;
+            calculadoraCientifica.Operacao = 'R';
             calculadoraCientifica.TxtResultado = txtResultado.Text;
-            calculadoraCientifica.CalcularRaizQuadrada();
+
+            calculadoraCientifica.CalcularOperacoesCientificas();
 
             txtResultado.Text = calculadoraCientifica.TxtResultado;
             txtOperacaoEmCurso.Text = calculadoraCientifica.TxtOperacaoEmCurso;
