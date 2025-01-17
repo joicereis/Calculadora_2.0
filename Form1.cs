@@ -17,6 +17,7 @@ namespace Calculadora
     public partial class frmCalculadora : Form
     {
         Calculadora calculadora = new Calculadora();
+        CalculadoraCientifica calculadoraCientifica = new CalculadoraCientifica();
 
         // - * * 
         public frmCalculadora()
@@ -128,8 +129,11 @@ namespace Calculadora
 
 
         //TO DO: AJUSTAR MÉTODO FRAÇACO E PASSAR PARA A CLASSE CALCULADORA
+
+        
         private void btnFracao_Click(object sender, EventArgs e)
         {
+            /*
             calculadora.Operacao = '/';
             calculadora.OperacaoEmMemoria = calculadora.Operacao;
             calculadora.TxtResultado = txtResultado.Text;
@@ -138,44 +142,44 @@ namespace Calculadora
                 {
                     calculadora.Valor2 = calculadora.Valor1;
                     calculadora.Valor1 = 1;
-                    calculadora.calcularOperacoes();
+                    calculadora.calcularOperacoes(OperacaoEmMemoria);
                 }
+            */
         }
 
         // AJUSTAR MÉTODO DE POTÊNCIA E EXIBIÇÃO DE SEU RESULTADO PELA CLASSE CALCULADORA
         private void btnPotencia_Click(object sender, EventArgs e)
         {
-            calculadora.Operacao = '*';
-            calculadora.OperacaoEmMemoria = calculadora.Operacao;
-            calculadora.TxtResultado = txtResultado.Text;
-            if (calculadora.Valor1 == null)
-            {
-                if (calculadora.validarPrimeiroValorDigitado())
-                {
-                    calculadora.Valor2 = calculadora.Valor1;
-                    calculadora.calcularOperacoes();
-                }
-            }
+            calculadoraCientifica.Operacao = '*';
+            calculadoraCientifica.OperacaoEmMemoria = calculadoraCientifica.Operacao;
+            calculadoraCientifica.TxtResultado = txtResultado.Text;
 
-            txtResultado.Text = calculadora.TxtResultado;
-            txtOperacaoEmCurso.Text = calculadora.TxtOperacaoEmCurso;
+            calculadoraCientifica.CalcularPotencia();
+
+            txtResultado.Text = calculadoraCientifica.TxtResultado;
+            txtOperacaoEmCurso.Text = calculadoraCientifica.TxtOperacaoEmCurso;
+
         }
 
         // AJUSTAR MÉTODO DE RAIZ QUADRADA E A EXIBIÇÃO DE SEU RESULTADO PELA CLASSE CALCULADORA
         private void btnRaizQuadrada_Click(object sender, EventArgs e)
         {
+            /*
             calculadora.Operacao = 'V';
             calculadora.OperacaoEmMemoria = calculadora.Operacao;
             if (calculadora.Valor1 == null)
                 if (calculadora.validarPrimeiroValorDigitado())
                 {
-                    calculadora.calcularOperacoes();
+                    calculadora.calcularOperacoes(OperacaoEmMemoria);
                 }
+            */
         }
 
         // AJUSTAR MÉTODO DE PORCENTO E A EXIBIÇÃO DE SEU RESULTADO PELA CLASSE CALCULADORA
         private void btnPorcento_Click(object sender, EventArgs e)
         {
+
+            /*
             if (calculadora.OperacaoEmMemoria == null)
                MessageBox.Show("Digite uma operãção válida.\nPor exemplo: '100+10%' ou '100*20%'");
                 
@@ -195,7 +199,8 @@ namespace Calculadora
                     calculadora.calcularOperacoes();
                 }
                 calculadora.Valor1 = null;
-            }                
+            }          
+            */
         }
         
   

@@ -35,7 +35,7 @@ namespace Calculadora
                 {
                     Valor2 = double.Parse(TxtResultado);
                     TxtResultado = "";
-                    calcularOperacoes();
+                    calcularOperacoes(OperacaoEmMemoria);
                 }
                 else
                 {
@@ -86,9 +86,9 @@ namespace Calculadora
         }
 
 
-        public void calcularOperacoes()
+        public void calcularOperacoes(char? operacaoEmMemoria)
         {
-            switch (OperacaoEmMemoria)
+            switch (operacaoEmMemoria)
             {
                 case '+':
                     Resultado = Valor1 + Valor2;            
@@ -147,7 +147,7 @@ namespace Calculadora
             if (Valor1 != null & OperacaoEmMemoria != null & TxtResultado != "")
             {
                 Valor2 = double.Parse(TxtResultado);
-                calcularOperacoes();
+                calcularOperacoes(OperacaoEmMemoria);
             }
             else
             {
