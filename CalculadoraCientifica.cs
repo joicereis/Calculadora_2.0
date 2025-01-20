@@ -9,7 +9,6 @@ namespace Calculadora
 {
     public class CalculadoraCientifica : Calculadora
     {
-
         public void CalcularOperacoesCientificas()
         {
             OperacaoEmMemoria = Operacao;
@@ -26,6 +25,9 @@ namespace Calculadora
                             CalcularFracao();
                             break;
                         case 'R':
+                            CalcularRaizQuadrada();
+                            break;
+                        case '%':
                             CalcularRaizQuadrada();
                             break;
                     }
