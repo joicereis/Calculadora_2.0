@@ -67,24 +67,15 @@ namespace Calculadora
         {
             if (Valor2 == null & TxtResultado == "")
             {
-                /*
-                OperacaoEmMemoria = Operacao;
-                TxtOperacaoEmCurso = $"{Valor1} {OperacaoEmMemoria}";
-                */
                 return false;
             }
             else if (Valor2 == null & TxtResultado != "")
             {
-                /*
-                Valor2 = double.Parse(TxtResultado);
-                TxtResultado = "";
-                */
                 return true;
             }
             else
                 return false;
         }
-
 
         public void calcularOperacoes(char? operacaoEmMemoria)
         {
@@ -108,7 +99,6 @@ namespace Calculadora
                     else
                     {
                         MessageBox.Show("Não é possível dividir por zero.");
-                        //limparTudo();
                         break;
                     }
                     
@@ -155,7 +145,6 @@ namespace Calculadora
             {
                 stringHistorico.AppendLine(itemLista);
             }
-            //txtHistórico.Text = stringHistorico.ToString();
         }
 
         public void limparTudo()
