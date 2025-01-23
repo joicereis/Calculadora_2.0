@@ -80,13 +80,19 @@ namespace Calculadora
 
              else if (Valor1 != null & OperacaoEmMemoria != null & TxtResultado != "")
              {
-                 Valor2 = double.Parse(TxtResultado);
-                 if (OperacaoEmMemoria != '*')
-                 {
-                     Valor2 = (Valor2 / 100) * Valor1;
-                     Operacao = null;
-                     calcularOperacoes(OperacaoEmMemoria);
-                 }
+                Valor2 = double.Parse(TxtResultado);
+
+                if(OperacaoEmMemoria == '*')
+                {
+                    Resultado = (Valor1 * Valor2) / 100.00;
+                }
+                else if (OperacaoEmMemoria != '*')
+                {
+                    Valor2 = (Valor1 * Valor2) / 100.00;
+                    Operacao = null;
+                    calcularOperacoes(OperacaoEmMemoria);
+                }
+                /*
                  else
                  {
                      Valor2 = (Valor2 / 100);
@@ -94,6 +100,8 @@ namespace Calculadora
                      calcularOperacoes(OperacaoEmMemoria);
                  }
                  Valor1 = null;
+                */
+
              }
         }
     }
