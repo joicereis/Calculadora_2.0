@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Calculadora.cs" />
     <Compile Include="CalculadoraCientifica.cs" />
+    <Compile Include="CalculadoraProgramador.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

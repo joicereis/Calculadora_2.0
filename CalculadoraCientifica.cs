@@ -28,9 +28,6 @@ namespace Calculadora
                         case 'R':
                             CalcularRaizQuadrada();
                             break;
-                        /*case '%':
-                            CalcularPorcentagem();
-                            break; */
                     }
                     gravarHistorico(OperacaRealizada);
                     defineNovaOperacaoEmCurso();
@@ -39,8 +36,6 @@ namespace Calculadora
                 }
             }
         }
-
-        
 
         public void CalcularPotencia()
         {
@@ -92,17 +87,28 @@ namespace Calculadora
                     Operacao = null;
                     calcularOperacoes(OperacaoEmMemoria);
                 }
-                /*
-                 else
-                 {
-                     Valor2 = (Valor2 / 100);
-                     Operacao = null;
-                     calcularOperacoes(OperacaoEmMemoria);
-                 }
-                 Valor1 = null;
-                */
-
              }
+        }
+
+        protected string ConverterDecimalParaBinario(double Valor1)
+        {
+            string varAuxiliarBinario = "";
+            string valorBinario = "";
+            double? quociente = null;
+            int? resto = null;
+            do
+            {
+                resto = Convert.ToInt32(Valor1 % 2);
+                quociente = (Valor1 - resto) / 2;
+                Valor1 = Convert.ToDouble(quociente);
+                varAuxiliarBinario += resto;
+            } while (quociente > 0);
+
+            for (int i = varAuxiliarBinario.Length - 1; i >= 0; i--)
+            {
+                valorBinario += varAuxiliarBinario[i];
+            }
+            return valorBinario;
         }
     }
 }

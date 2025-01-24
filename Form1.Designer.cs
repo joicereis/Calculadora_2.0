@@ -57,6 +57,7 @@
             this.txtHistórico = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAtualizaHistorico = new System.Windows.Forms.Button();
+            this.btnBinario = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDelete
@@ -350,11 +351,22 @@
             this.btnAtualizaHistorico.UseVisualStyleBackColor = true;
             this.btnAtualizaHistorico.Click += new System.EventHandler(this.btnAtualizaHistorico_Click);
             // 
+            // btnBinario
+            // 
+            this.btnBinario.Location = new System.Drawing.Point(12, 372);
+            this.btnBinario.Name = "btnBinario";
+            this.btnBinario.Size = new System.Drawing.Size(62, 28);
+            this.btnBinario.TabIndex = 31;
+            this.btnBinario.Text = "Binário";
+            this.btnBinario.UseVisualStyleBackColor = true;
+            this.btnBinario.Click += new System.EventHandler(this.btnBinario_Click);
+            // 
             // frmCalculadora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(516, 395);
+            this.ClientSize = new System.Drawing.Size(516, 412);
+            this.Controls.Add(this.btnBinario);
             this.Controls.Add(this.btnAtualizaHistorico);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtHistórico);
@@ -425,6 +437,7 @@
         private System.Windows.Forms.TextBox txtHistórico;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAtualizaHistorico;
+        private System.Windows.Forms.Button btnBinario;
     }
 }
 

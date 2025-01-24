@@ -16,7 +16,7 @@ namespace Calculadora
 {
     public partial class frmCalculadora : Form
     {
-        CalculadoraCientifica calculadoraCientifica = new CalculadoraCientifica();
+        CalculadoraProgramador calculadoraProgramador = new CalculadoraProgramador();
 
         public frmCalculadora()
         {
@@ -39,86 +39,86 @@ namespace Calculadora
         }
         private void btnClear_Click(object sender, EventArgs e)
         {
-            calculadoraCientifica.limparTudo();
+            calculadoraProgramador.limparTudo();
             txtOperacaoEmCurso.Text = "";
             txtResultado.Text = "";
             txtHistórico.Clear();
         }
         private void btnSoma_Click(object sender, EventArgs e)
         {
-            calculadoraCientifica.Operacao = '+';
+            calculadoraProgramador.Operacao = '+';
             buscaValidarValores();
         }
       
         private void btnSubtrai_Click(object sender, EventArgs e)
         {
-            calculadoraCientifica.Operacao = '-';
+            calculadoraProgramador.Operacao = '-';
             buscaValidarValores();
         }
 
         private void btnMultiplica_Click(object sender, EventArgs e)
         {
-            calculadoraCientifica.Operacao = '*';
+            calculadoraProgramador.Operacao = '*';
             buscaValidarValores();
         }
         private void btnDivide_Click(object sender, EventArgs e)
         {
-            calculadoraCientifica.Operacao = '/';
+            calculadoraProgramador.Operacao = '/';
             buscaValidarValores();
         }
         
         private void btnResultado_Click(object sender, EventArgs e)
         {
-            calculadoraCientifica.Operacao = null;
-            calculadoraCientifica.TxtResultado = txtResultado.Text;
-            calculadoraCientifica.encontraResultado(calculadoraCientifica.Operacao);
+            calculadoraProgramador.Operacao = null;
+            calculadoraProgramador.TxtResultado = txtResultado.Text;
+            calculadoraProgramador.encontraResultado(calculadoraProgramador.Operacao);
             preencherTxtOperacaoEmCurso();
         }
               
         private void btnFracao_Click(object sender, EventArgs e)
         {
-            calculadoraCientifica.Operacao = 'F';
+            calculadoraProgramador.Operacao = 'F';
             validaOperacoesCientificas();
         }
 
         private void btnPotencia_Click(object sender, EventArgs e)
         {
-            calculadoraCientifica.Operacao = 'P';
+            calculadoraProgramador.Operacao = 'P';
             validaOperacoesCientificas();
         }
 
         private void btnRaizQuadrada_Click(object sender, EventArgs e)
         {
-            calculadoraCientifica.Operacao = 'R';
+            calculadoraProgramador.Operacao = 'R';
             validaOperacoesCientificas();
         }
 
         // AJUSTAR MÉTODO DE PORCENTO E A EXIBIÇÃO DE SEU RESULTADO PELA CLASSE CALCULADORA
         private void btnPorcento_Click(object sender, EventArgs e)
         {
-            calculadoraCientifica.Operacao = '%';
-            calculadoraCientifica.TxtResultado = txtResultado.Text;
-            calculadoraCientifica.CalcularPorcentagem();
+            calculadoraProgramador.Operacao = '%';
+            calculadoraProgramador.TxtResultado = txtResultado.Text;
+            calculadoraProgramador.CalcularPorcentagem();
             preencherTxtOperacaoEmCurso();
         }
 
         private void buscaValidarValores()
         {
-            calculadoraCientifica.TxtResultado = txtResultado.Text;
-            calculadoraCientifica.validaValores();
+            calculadoraProgramador.TxtResultado = txtResultado.Text;
+            calculadoraProgramador.validaValores();
             preencherTxtOperacaoEmCurso();
         }
 
         private void validaOperacoesCientificas()
         {
-            calculadoraCientifica.TxtResultado = txtResultado.Text;
-            calculadoraCientifica.calcularOperacoesCientificas();
+            calculadoraProgramador.TxtResultado = txtResultado.Text;
+            calculadoraProgramador.calcularOperacoesCientificas();
             preencherTxtOperacaoEmCurso();
         }
         private void preencherTxtOperacaoEmCurso()
         {
-            txtResultado.Text = calculadoraCientifica.TxtResultado;
-            txtOperacaoEmCurso.Text = calculadoraCientifica.TxtOperacaoEmCurso;
+            txtResultado.Text = calculadoraProgramador.TxtResultado;
+            txtOperacaoEmCurso.Text = calculadoraProgramador.TxtOperacaoEmCurso;
         }
 
         private void btnBackSpace_Click(object sender, EventArgs e)
@@ -135,10 +135,10 @@ namespace Calculadora
             if (e.KeyChar == (char)Keys.Enter)
             //Converte Keys.Enter para char para fazer a comparação já que o Enter é enum e o KeyChar é do tipo char
             {
-                calculadoraCientifica.Operacao = null;
+                calculadoraProgramador.Operacao = null;
                 //MessageBox.Show("Tecla Enter pressionada!");
-                calculadoraCientifica.TxtResultado = txtResultado.Text;
-                calculadoraCientifica.encontraResultado(calculadoraCientifica.Operacao);
+                calculadoraProgramador.TxtResultado = txtResultado.Text;
+                calculadoraProgramador.encontraResultado(calculadoraProgramador.Operacao);
                 preencherTxtOperacaoEmCurso();
                 txtResultado.Clear();
                 e.Handled = true;
@@ -149,9 +149,9 @@ namespace Calculadora
             {
                 if (e.KeyChar == '+' || e.KeyChar == '-' || e.KeyChar == '*' || e.KeyChar == '/')
                 {
-                    calculadoraCientifica.Operacao = e.KeyChar;
-                    calculadoraCientifica.TxtResultado = txtResultado.Text;
-                    calculadoraCientifica.validaValores();
+                    calculadoraProgramador.Operacao = e.KeyChar;
+                    calculadoraProgramador.TxtResultado = txtResultado.Text;
+                    calculadoraProgramador.validaValores();
                     preencherTxtOperacaoEmCurso();
                     txtResultado.Clear();
                     e.Handled = true;
@@ -186,8 +186,8 @@ namespace Calculadora
 
         private void btnAtualizaHistorico_Click(object sender, EventArgs e)
         {
-            txtHistórico.Text = calculadoraCientifica.stringHistorico.ToString();
-            MessageBox.Show(calculadoraCientifica.stringHistorico.ToString());
+            txtHistórico.Text = calculadoraProgramador.stringHistorico.ToString();
+            MessageBox.Show(calculadoraProgramador.stringHistorico.ToString());
         }
 
         private void frmCalculadora_Shown(object sender, EventArgs e)
@@ -205,6 +205,14 @@ namespace Calculadora
         private void txtResultado_Click(object sender, EventArgs e)
         {
             HideCaret();
+        }
+
+        private void btnBinario_Click(object sender, EventArgs e)
+        {
+            calculadoraProgramador.Operacao = 'B';
+            calculadoraProgramador.TxtResultado = txtResultado.Text;
+            calculadoraProgramador.calcularOperacoesProgramador();
+            preencherTxtOperacaoEmCurso();
         }
     } 
         
